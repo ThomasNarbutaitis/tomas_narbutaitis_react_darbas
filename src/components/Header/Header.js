@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import Container from '../../UI/Container';
+import Container from '../UI/Container';
 import css from './Header.module.css';
 import logo from '../../assets/Logo.png';
 

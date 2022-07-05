@@ -8,4 +8,5 @@ In the project directory, you can run:
 
 ## Dependancies :
 
-react-router-dom^5
+npm install
+react-router-dom@^5
