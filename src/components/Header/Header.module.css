@@ -1,0 +1,31 @@
+.nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1rem 0;
+  color: navy;
+  align-items: center;
+}
+
+.header {
+  border-bottom: 5px solid blue;
+  margin-bottom: 1rem;
+}
+
+.logo {
+  height: 80px;
+}
+
+.link {
+  color: inherit;
+  font-size: 1.4rem;
+  margin-right: 20px;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.active {
+  text-decoration: underline;
+}
