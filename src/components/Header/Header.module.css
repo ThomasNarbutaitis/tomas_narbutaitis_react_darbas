@@ -2,14 +2,14 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 1rem 0;
-  color: navy;
+
+  color: #fff;
   align-items: center;
 }
 
 .header {
-  border-bottom: 5px solid blue;
   margin-bottom: 1rem;
+  background-image: linear-gradient(to right, rgb(235, 239, 252), blue);
 }
 
 .logo {

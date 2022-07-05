@@ -1,8 +1,8 @@
 .input {
-  background-color: white;
+  background-color: #fff;
   color: #555;
   padding: 8px 20px;
-  border: 1px solid rgb(66, 24, 252);
+  border: 2px solid blue;
   border-radius: 5px;
   cursor: pointer;
   font-size: 18px;
@@ -12,7 +12,7 @@
 }
 
 .validInput {
-  border: 1px solid rgb(66, 24, 252);
+  border: 1px solid blue;
 }
 
 .errorInput {
