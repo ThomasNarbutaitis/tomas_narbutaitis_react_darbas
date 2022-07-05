@@ -7,8 +7,16 @@
   cursor: pointer;
   font-size: 18px;
   font-weight: 700;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
   outline: none;
+}
+
+.validInput {
+  border: 1px solid rgb(66, 24, 252);
+}
+
+.errorInput {
+  border: 1px solid red;
 }
 
 .input:hover {

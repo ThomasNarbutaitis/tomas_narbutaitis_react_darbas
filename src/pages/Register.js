@@ -1,75 +1,90 @@
-import React, { useState } from 'react';
+import { useFormik } from 'formik';
+import React from 'react';
+import * as Yup from 'yup';
 import Input from '../components/Input/Input';
 import Button from '../components/UI/Button';
 import Container from '../components/UI/Container';
 import Title from '../components/UI/Title';
+import '../App.css';
 
 function Register() {
-  const [email, setEmail] = useState('');
-  const [pass, setPass] = useState('');
-  const [repPass, setRepPass] = useState('');
+  const formik = useFormik({
+    initialValues: {
+      email: '',
+      password: '',
+      repPassword: '',
+    },
+    validationSchema: Yup.object({
+      email: Yup.string().email('Invalid email format').required('Required'),
+      password: Yup.string()
+        .min(5, 'At least 5 symbols')
+        .max(15, 'Maximum of 15 symbols')
+        .required('Required'),
+      repPassword: Yup.string()
+        .min(5, 'At least 5 symbols')
+        .max(15, 'Maximum of 15 symbols')
+        .required('Required'),
+    }),
+    onSubmit: (values, { resetForm }) => {
+      console.log('values ===', values);
+      resetForm({ values: '' });
+    },
+  });
 
-  function emailEnterHandler(event) {
-    setEmail(event.target.value);
-  }
+  // function inputClassProvider(field) {
+  //   let attachedClass = 'validInput';
+  //   if (formik.touched[field] && formik.errors[field]) {
+  //     attachedClass = 'errorInput';
+  //   }
+  //   return attachedClass;
+  // }
 
-  function passEnterHandler(event) {
-    setPass(event.target.value);
-  }
-
-  function repPassEnterHandler(event) {
-    setRepPass(event.target.value);
-  }
-
-  function submitRegistration(event) {
-    const regObj = {
-      email: email,
-      password: pass,
-    };
-    console.log('regObj ===', regObj);
-  }
-
-  function resetForm() {
-    setEmail('');
-    setPass('');
-    setRepPass('');
-  }
+  // console.log(formik.errors);
+  // console.log(formik.touched);
 
   return (
     <Container>
       <Title>Please Register Here</Title>
-      <form>
+      <form onSubmit={formik.handleSubmit}>
         <div className='inputBox'>
           <Input
-            onChange={emailEnterHandler}
-            value={email}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.email}
             name='email'
             type='email'
+            // className={inputClassProvider('email')}
           >
             Email
           </Input>
+          <p className='errors'>{formik.errors.email}</p>
           <Input
-            onChange={passEnterHandler}
-            value={pass}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.password}
             name='password'
             type='password'
           >
             Password
           </Input>
+          <p className='errors'>{formik.errors.password}</p>
+
           <Input
-            onChange={repPassEnterHandler}
-            value={repPass}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.repPassword}
             name='repPassword'
             type='password'
           >
             Repeat Password
           </Input>
+          <p className='errors'>{formik.errors.repPassword}</p>
         </div>
         <div className='btnBox'>
-          <Button onClick={submitRegistration} type='submit' className='prime'>
+          <Button type='submit' className='prime'>
             Submit
           </Button>
-          <Button onClick={resetForm} className='second'>
+          <Button onClick={() => formik.resetForm()} className='second'>
             Reset
           </Button>
         </div>

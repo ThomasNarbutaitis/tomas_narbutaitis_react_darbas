@@ -39,3 +39,16 @@ form {
   display: flex;
   justify-content: center;
 }
+
+.errors {
+  color: red;
+  margin-bottom: 15px;
+}
+
+.validInput {
+  border: 1px solid rgb(66, 24, 252);
+}
+
+.errorInput {
+  border: 1px solid red;
+}

@@ -9,7 +9,7 @@ const Input = (props) => {
       <input
         value={props.value}
         onChange={props.onChange}
-        className={css.input}
+        className={`${css.input} ${css[props.className]}`}
         type={props.type}
         name={props.name}
         required
