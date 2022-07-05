@@ -6,6 +6,7 @@ import Button from '../components/UI/Button';
 import Container from '../components/UI/Container';
 import Title from '../components/UI/Title';
 import '../App.css';
+import { baseUrl, myFetch } from '../utils';
 
 function Register() {
   const formik = useFormik({
@@ -25,8 +26,20 @@ function Register() {
         .max(15, 'Maximum of 15 symbols')
         .required('Required'),
     }),
-    onSubmit: (values, { resetForm }) => {
+    onSubmit: async (values, { resetForm }) => {
       console.log('values ===', values);
+      const regObj = {
+        email: values.email,
+        password: values.password,
+      };
+
+      const fetchResult = await myFetch(
+        `${baseUrl}/auth/register`,
+        'POST',
+        regObj
+      );
+
+      console.log('fetchResult ===', fetchResult);
       resetForm({ values: '' });
     },
   });
