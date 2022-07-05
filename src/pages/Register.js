@@ -27,7 +27,7 @@ function Register() {
         .required('Required'),
     }),
     onSubmit: async (values, { resetForm }) => {
-      console.log('values ===', values);
+      // console.log('values ===', values);
       const regObj = {
         email: values.email,
         password: values.password,
