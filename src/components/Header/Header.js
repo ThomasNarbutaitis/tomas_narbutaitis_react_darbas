@@ -9,20 +9,20 @@ function Header() {
     <header className={css.header}>
       <Container>
         <nav className={css.nav}>
-          <NavLink className={css.link} exact to='#logo'>
+          <NavLink className={css.link} to='#logo'>
             <img className={css.logo} src={logo} alt='logo img' />
           </NavLink>
           <div>
-            <NavLink className={css.link} exact to='/register'>
+            <NavLink className={css.link} to='/register'>
               Register
             </NavLink>
-            <NavLink className={css.link} exact to='/login'>
+            <NavLink className={css.link} to='/login'>
               Login
             </NavLink>
-            <NavLink className={css.link} exact to='/'>
+            <NavLink className={css.link} to='/'>
               Home
             </NavLink>
-            <NavLink className={css.link} exact to='/add'>
+            <NavLink className={css.link} to='/add'>
               Add
             </NavLink>
           </div>

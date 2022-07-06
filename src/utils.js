@@ -14,6 +14,7 @@ export async function myFetch(url, method = 'GET', body = null) {
 
     const resp = await fetch(url, options);
     const dataInJs = await resp.json();
+    // console.log('dataInJs ===', dataInJs);
     return dataInJs;
   } catch (error) {
     console.log('MyFetch error ===', error);

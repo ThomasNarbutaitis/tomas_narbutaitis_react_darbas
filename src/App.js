@@ -4,6 +4,7 @@ import Header from './components/Header/Header';
 import Add from './pages/Add';
 import Home from './pages/Home';
 import Login from './pages/Login';
+import NotFound from './pages/NotFound';
 import Register from './pages/Register';
 
 function App() {
@@ -20,8 +21,11 @@ function App() {
         <Route path='/add'>
           <Add />
         </Route>
-        <Route path='/'>
+        <Route exact path='/'>
           <Home />
+        </Route>
+        <Route path='*'>
+          <NotFound />
         </Route>
       </Switch>
     </div>
