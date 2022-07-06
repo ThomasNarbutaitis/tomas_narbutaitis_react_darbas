@@ -26,8 +26,7 @@ function Register() {
         .max(15, 'Maximum of 15 symbols')
         .required('Required'),
       repPassword: Yup.string()
-        .min(5, 'At least 5 symbols')
-        .max(15, 'Maximum of 15 symbols')
+        .oneOf([Yup.ref('password')], 'Passwords must match')
         .required('Required'),
     }),
     onSubmit: async (values, { resetForm }) => {
