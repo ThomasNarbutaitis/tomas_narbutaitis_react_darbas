@@ -2,10 +2,10 @@
 
 ## A functional front-end react project that communicates with backend. Lets user to register, login, add and view skills
 
-*RegisterPage - registers new user
-*LoginPage - logs user in
-*HomePage - once user is logged in, displays skills as cards
-*AddPage - adds new skill, that will be displayed in homePage
+- RegisterPage - registers new user
+- LoginPage - logs user in
+- HomePage - once user is logged in, displays skills as cards
+- AddPage - adds new skill, that will be displayed in homePage
 
 ### Cloning and Running the Application in local
 
@@ -19,6 +19,6 @@ npm i dotenv
 npm i formik
 npm i yup
 
-n order to run the application Type the following command:
+#### In order to run the application Type the following command:
 
 npm start
