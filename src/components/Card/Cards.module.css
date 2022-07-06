@@ -1,0 +1,22 @@
+.cardsBox {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+}
+
+.cards {
+  border: 2px solid blue;
+  border-radius: 5px;
+  padding: 15px;
+  text-align: center;
+  min-width: 16rem;
+}
+
+.title {
+  margin-bottom: 20px;
+}
+
+.descr {
+  margin-bottom: 10px;
+  text-align: justify;
+}

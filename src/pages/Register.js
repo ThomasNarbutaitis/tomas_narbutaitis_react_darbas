@@ -44,17 +44,6 @@ function Register() {
     },
   });
 
-  // function inputClassProvider(field) {
-  //   let attachedClass = 'validInput';
-  //   if (formik.touched[field] && formik.errors[field]) {
-  //     attachedClass = 'errorInput';
-  //   }
-  //   return attachedClass;
-  // }
-
-  // console.log(formik.errors);
-  // console.log(formik.touched);
-
   return (
     <Container>
       <Title>Please Register Here</Title>
@@ -66,7 +55,6 @@ function Register() {
             value={formik.values.email}
             name='email'
             type='email'
-            // className={inputClassProvider('email')}
           >
             Email
           </Input>

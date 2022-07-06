@@ -4,7 +4,9 @@ if (!baseUrl) throw new Error('baseUrl not found');
 export async function myFetch(url, method = 'GET', body = null) {
   try {
     const options = {
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+      },
     };
     options.method = method === 'POST' ? 'POST' : 'GET';
     options.body = body ? JSON.stringify(body) : null;
@@ -22,7 +24,7 @@ export async function myFetch(url, method = 'GET', body = null) {
   }
 }
 
-export async function myFetchAuth(url, token) {
+export async function myFetchAuth(url, token, method = 'GET', body = null) {
   // console.log('token ===', token);
   try {
     const options = {
@@ -31,12 +33,14 @@ export async function myFetchAuth(url, token) {
         Authorization: `Bearer ${token}`,
       },
     };
+    options.method = method === 'POST' ? 'POST' : 'GET';
+    options.body = body ? JSON.stringify(body) : null;
 
     const resp = await fetch(url, options);
     // console.log('resp ===', resp);
     const dataInJs = await resp.json();
     return dataInJs;
   } catch (error) {
-    console.log('MyFetch error ===', error);
+    console.log('MyFetchAuth error ===', error);
   }
 }

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
+import Cards from '../components/Card/Cards';
+import SingleCard from '../components/Card/SingleCard';
 import Container from '../components/UI/Container';
 import Title from '../components/UI/Title';
 import { useAuthCtx } from '../store/authContext';
@@ -11,9 +13,9 @@ function Home() {
   const [skills, setSkills] = useState([]);
 
   async function getSkills(token) {
-    // const fetchResult = await myFetch(`${baseUrl}/content/skills`);
     const fetchResult = await myFetchAuth(`${baseUrl}/content/skills`, token);
-    console.log('fetchResult ===', fetchResult);
+    // console.log('fetchResult ===', fetchResult);
+    setSkills(fetchResult);
   }
 
   useEffect(() => {
@@ -22,12 +24,19 @@ function Home() {
     }
   }, []);
 
+  console.log('skills ===', skills);
+
   return (
     <Container>
       {!isUserLoggedIn && (
         <Title>Welcome! Please login or register first...</Title>
       )}
-      {isUserLoggedIn && <Title>Homepage</Title>}
+      {isUserLoggedIn && <Title>Skills</Title>}
+      <Cards>
+        {skills.map((sObj) => (
+          <SingleCard key={sObj.id} {...sObj} />
+        ))}
+      </Cards>
     </Container>
   );
 }
