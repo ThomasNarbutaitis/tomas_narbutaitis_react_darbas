@@ -9,7 +9,7 @@ const AuthContext = createContext({
 AuthContext.displayName = 'AuthContext';
 
 const AuthProvider = (props) => {
-  const [token, setToken] = useState(null);
+  const [token, setToken] = useState(localStorage.getItem('login-token'));
 
   function login(gotToken) {
     setToken(gotToken);

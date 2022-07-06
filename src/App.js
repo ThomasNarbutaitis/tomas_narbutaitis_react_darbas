@@ -1,6 +1,7 @@
 import { Route, Switch } from 'react-router-dom';
 import './App.css';
 import Header from './components/Header/Header';
+import ProtectedRoute from './components/UI/ProtectedRoute';
 import Add from './pages/Add';
 import Home from './pages/Home';
 import Login from './pages/Login';
@@ -18,9 +19,11 @@ function App() {
         <Route path='/login'>
           <Login />
         </Route>
-        <Route path='/add'>
+
+        <ProtectedRoute path='/add'>
           <Add />
-        </Route>
+        </ProtectedRoute>
+
         <Route exact path='/'>
           <Home />
         </Route>

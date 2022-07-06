@@ -42,3 +42,15 @@
   border: 2px solid rgb(39, 77, 115);
   color: #fff;
 }
+
+.alert {
+  background-color: rgb(240, 138, 138);
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 15px;
+}
+
+.link {
+  text-decoration: underline;
+  color: blue;
+}

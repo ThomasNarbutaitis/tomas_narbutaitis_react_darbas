@@ -14,7 +14,7 @@ function Home() {
 
   async function getSkills(token) {
     const fetchResult = await myFetchAuth(`${baseUrl}/content/skills`, token);
-    // console.log('fetchResult ===', fetchResult);
+    // console.log('fetchSkillsReasult ===', fetchResult);
     setSkills(fetchResult);
   }
 
@@ -23,8 +23,6 @@ function Home() {
       getSkills(token);
     }
   }, []);
-
-  console.log('skills ===', skills);
 
   return (
     <Container>
