@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Input from '../components/Input/Input';
 import Button from '../components/UI/Button';
 import Container from '../components/UI/Container';
@@ -9,8 +9,12 @@ import { useFormik } from 'formik';
 import css from '../components/Input/Input.module.css';
 import { baseUrl, myFetchAuth } from '../utils';
 import { useHistory } from 'react-router-dom';
+import Feedback from '../components/Feedback/Feedback';
+import '../App.css';
 
 function Add() {
+  const [feedback, setFeedback] = useState('');
+  const [feedClass, setFeedClass] = useState('');
   const { token } = useAuthCtx();
   const history = useHistory();
 
@@ -36,11 +40,14 @@ function Add() {
         values
       );
 
-      console.log('fetchResultinSkills ===', fetchResult);
+      // console.log('fetchResultinSkills ===', fetchResult);
 
-      if (fetchResult.token) {
-        history.replace('/');
+      if (fetchResult.msg) {
+        setFeedback('Skill was added successfuly');
+        setFeedClass('success');
       }
+      setFeedback('Something went wrong... Please try again');
+      setFeedClass('alert');
     },
   });
 
@@ -82,6 +89,7 @@ function Add() {
             Reset
           </Button>
         </div>
+        <Feedback className={feedClass}>{feedback}</Feedback>
       </form>
     </Container>
   );

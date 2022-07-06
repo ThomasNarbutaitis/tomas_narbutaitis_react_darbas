@@ -43,3 +43,24 @@ form {
   color: red;
   margin-bottom: 15px;
 }
+
+.alert {
+  background-color: rgb(240, 138, 138);
+}
+
+.success {
+  background-color: rgb(171, 250, 188);
+}
+
+.feed-box {
+  width: 100%;
+}
+
+.feed-text {
+  padding: 15px;
+  text-align: center;
+}
+
+.loading {
+  font-size: 20px;
+}

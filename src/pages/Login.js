@@ -1,5 +1,5 @@
 import { useFormik } from 'formik';
-import React from 'react';
+import React, { useState } from 'react';
 import * as Yup from 'yup';
 import Input from '../components/Input/Input';
 import Button from '../components/UI/Button';
@@ -9,10 +9,12 @@ import '../App.css';
 import { baseUrl, myFetch } from '../utils';
 import { useAuthCtx } from '../store/authContext';
 import { useHistory } from 'react-router-dom';
+import Feedback from '../components/Feedback/Feedback';
 
 function Login() {
+  const [feedback, setFeedback] = useState('');
+  const [feedClass, setFeedClass] = useState('');
   const history = useHistory();
-
   const ctx = useAuthCtx();
 
   const formik = useFormik({
@@ -36,13 +38,14 @@ function Login() {
         values
       );
 
-      // console.log('fetchResult ===', fetchResult);
-      // console.log('fetchResult.token ===', fetchResult.token);
       if (fetchResult.token) {
+        setFeedback('Login was successful');
+        setFeedClass('success');
         ctx.login(fetchResult.token);
-        // resetForm({ values: '' });
         history.replace('/');
       }
+      setFeedback('Login was unsuccessful... Please try again');
+      setFeedClass('alert');
     },
   });
   return (
@@ -79,6 +82,7 @@ function Login() {
             Reset
           </Button>
         </div>
+        <Feedback className={feedClass}>{feedback}</Feedback>
       </form>
     </Container>
   );

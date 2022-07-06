@@ -7,7 +7,6 @@ import css from './UI.module.css';
 function ProtectedRoute(props) {
   const { isUserLoggedIn } = useAuthCtx();
   const { children, ...rest } = props;
-  console.log('rest ===', rest);
   return (
     <Route {...rest}>
       {isUserLoggedIn ? (

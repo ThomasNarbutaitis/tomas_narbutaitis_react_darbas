@@ -1,5 +1,5 @@
 import { useFormik } from 'formik';
-import React from 'react';
+import React, { useState } from 'react';
 import * as Yup from 'yup';
 import Input from '../components/Input/Input';
 import Button from '../components/UI/Button';
@@ -7,8 +7,12 @@ import Container from '../components/UI/Container';
 import Title from '../components/UI/Title';
 import '../App.css';
 import { baseUrl, myFetch } from '../utils';
+import Feedback from '../components/Feedback/Feedback';
 
 function Register() {
+  const [feedback, setFeedback] = useState('');
+  const [feedClass, setFeedClass] = useState('');
+
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -27,7 +31,6 @@ function Register() {
         .required('Required'),
     }),
     onSubmit: async (values, { resetForm }) => {
-      // console.log('values ===', values);
       const regObj = {
         email: values.email,
         password: values.password,
@@ -40,6 +43,13 @@ function Register() {
       );
 
       console.log('fetchResult ===', fetchResult);
+      if (!fetchResult.LastID) {
+        setFeedback('Registration unsuccessful... Please try again');
+        setFeedClass('alert');
+      }
+      setFeedback('Registration was successful');
+      setFeedClass('success');
+
       resetForm({ values: '' });
     },
   });
@@ -83,12 +93,13 @@ function Register() {
         </div>
         <div className='btnBox'>
           <Button type='submit' className='prime'>
-            Submit
+            Register
           </Button>
           <Button onClick={() => formik.resetForm()} className='second'>
             Reset
           </Button>
         </div>
+        <Feedback className={feedClass}>{feedback}</Feedback>
       </form>
     </Container>
   );

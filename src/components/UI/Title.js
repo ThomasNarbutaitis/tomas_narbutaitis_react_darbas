@@ -3,7 +3,7 @@ import css from './UI.module.css';
 const Title = (props) => {
   return (
     <div className={css.titleBox}>
-      <h1>{props.children}</h1>
+      <h1 className={css.title}>{props.children}</h1>
     </div>
   );
 };
