@@ -31,15 +31,15 @@ function Login() {
       // console.log('values ===', values);
 
       const fetchResult = await myFetch(
-        `${baseUrl}/auth/register`,
+        `${baseUrl}/auth/login`,
         'POST',
         values
       );
 
       // console.log('fetchResult ===', fetchResult);
-      console.log('fetchResult.lastID ===', fetchResult.lastID);
-      if (fetchResult.lastID) {
-        ctx.login();
+      // console.log('fetchResult.token ===', fetchResult.token);
+      if (fetchResult.token) {
+        ctx.login(fetchResult.token);
         // resetForm({ values: '' });
         history.replace('/');
       }

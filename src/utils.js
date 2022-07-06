@@ -13,8 +13,28 @@ export async function myFetch(url, method = 'GET', body = null) {
     // return;
 
     const resp = await fetch(url, options);
+    // console.log('resp ===', resp);
     const dataInJs = await resp.json();
     // console.log('dataInJs ===', dataInJs);
+    return dataInJs;
+  } catch (error) {
+    console.log('MyFetch error ===', error);
+  }
+}
+
+export async function myFetchAuth(url, token) {
+  // console.log('token ===', token);
+  try {
+    const options = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+    };
+
+    const resp = await fetch(url, options);
+    // console.log('resp ===', resp);
+    const dataInJs = await resp.json();
     return dataInJs;
   } catch (error) {
     console.log('MyFetch error ===', error);

@@ -9,20 +9,23 @@ const AuthContext = createContext({
 AuthContext.displayName = 'AuthContext';
 
 const AuthProvider = (props) => {
-  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+  const [token, setToken] = useState(null);
 
-  function login() {
-    setIsUserLoggedIn(true);
+  function login(gotToken) {
+    setToken(gotToken);
+    localStorage.setItem('login-token', gotToken);
   }
 
   function logout() {
-    setIsUserLoggedIn(false);
+    setToken(null);
+    localStorage.removeItem('login-token');
   }
 
   const ctx = {
     login,
     logout,
-    isUserLoggedIn,
+    isUserLoggedIn: !!token,
+    token,
   };
 
   return (
