@@ -12,12 +12,10 @@ const AuthProvider = (props) => {
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
 
   function login() {
-    console.log('prisiloginom');
     setIsUserLoggedIn(true);
   }
 
   function logout() {
-    console.log('issiloginom');
     setIsUserLoggedIn(false);
   }
 

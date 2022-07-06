@@ -8,8 +8,11 @@ import Title from '../components/UI/Title';
 import '../App.css';
 import { baseUrl, myFetch } from '../utils';
 import { useAuthCtx } from '../store/authContext';
+import { useHistory } from 'react-router-dom';
 
 function Login() {
+  const history = useHistory();
+
   const ctx = useAuthCtx();
 
   const formik = useFormik({
@@ -37,7 +40,8 @@ function Login() {
       console.log('fetchResult.lastID ===', fetchResult.lastID);
       if (fetchResult.lastID) {
         ctx.login();
-        resetForm({ values: '' });
+        // resetForm({ values: '' });
+        history.replace('/');
       }
     },
   });
