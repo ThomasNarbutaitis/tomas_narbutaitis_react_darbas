@@ -2,11 +2,11 @@ import { Route, Switch } from 'react-router-dom';
 import './App.css';
 import Header from './components/Header/Header';
 import ProtectedRoute from './components/UI/ProtectedRoute';
-import Add from './pages/Add';
-import Home from './pages/Home';
-import Login from './pages/Login';
-import NotFound from './pages/NotFound';
-import Register from './pages/Register';
+import AddPage from './pages/AddPage';
+import HomePage from './pages/HomePage';
+import LoginPage from './pages/LoginPage';
+import NotFoundPage from './pages/NotFoundPage';
+import RegisterPage from './pages/RegisterPage';
 
 function App() {
   return (
@@ -14,21 +14,21 @@ function App() {
       <Header />
       <Switch>
         <Route path='/register'>
-          <Register />
+          <RegisterPage />
         </Route>
         <Route path='/login'>
-          <Login />
+          <LoginPage />
         </Route>
 
         <ProtectedRoute path='/add'>
-          <Add />
+          <AddPage />
         </ProtectedRoute>
 
         <Route exact path='/'>
-          <Home />
+          <HomePage />
         </Route>
         <Route path='*'>
-          <NotFound />
+          <NotFoundPage />
         </Route>
       </Switch>
     </div>

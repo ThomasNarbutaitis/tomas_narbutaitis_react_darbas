@@ -12,6 +12,11 @@
   width: 100%;
 }
 
+.input::placeholder {
+  color: #999;
+  font-size: 14px;
+}
+
 .validInput {
   border: 1px solid blue;
 }
@@ -27,4 +32,10 @@
 .inputBox {
   display: flex;
   flex-direction: column;
+}
+
+.label {
+  font-size: 18px;
+  margin-bottom: 5px;
+  font-weight: 600;
 }

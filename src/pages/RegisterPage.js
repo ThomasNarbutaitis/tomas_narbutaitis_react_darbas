@@ -1,15 +1,15 @@
 import { useFormik } from 'formik';
 import React, { useState } from 'react';
 import * as Yup from 'yup';
+import Feedback from '../components/Feedback/Feedback';
+import Container from '../components/UI/Container';
 import Input from '../components/Input/Input';
 import Button from '../components/UI/Button';
-import Container from '../components/UI/Container';
+import { baseUrl, myFetch } from '../utils';
 import Title from '../components/UI/Title';
 import '../App.css';
-import { baseUrl, myFetch } from '../utils';
-import Feedback from '../components/Feedback/Feedback';
 
-function Register() {
+function RegisterPage() {
   const [feedback, setFeedback] = useState('');
   const [feedClass, setFeedClass] = useState('');
 
@@ -64,6 +64,7 @@ function Register() {
             value={formik.values.email}
             name='email'
             type='email'
+            placeholder='your@email.lt'
           >
             Email
           </Input>
@@ -74,6 +75,7 @@ function Register() {
             value={formik.values.password}
             name='password'
             type='password'
+            placeholder='secret1'
           >
             Password
           </Input>
@@ -85,6 +87,7 @@ function Register() {
             value={formik.values.repPassword}
             name='repPassword'
             type='password'
+            placeholder='secret1'
           >
             Repeat Password
           </Input>
@@ -104,4 +107,4 @@ function Register() {
   );
 }
 
-export default Register;
+export default RegisterPage;

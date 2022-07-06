@@ -1,15 +1,24 @@
-# Getting Started with Create React App
+# Simple React JS Project
 
-## To run the project
+## A functional front-end react project that communicates with backend. Lets user to register, login, add and view skills
 
-In the project directory, you can run:
+*RegisterPage - registers new user
+*LoginPage - logs user in
+*HomePage - once user is logged in, displays skills as cards
+*AddPage - adds new skill, that will be displayed in homePage
 
-### `npm start`
+### Cloning and Running the Application in local
 
-## Dependancies :
+Clone the project into local
+
+Install all the npm packages. Go into the project folder and type the following commands to install all npm packages:
 
 npm install
-react-router-dom@^5
-formi
-yup
-dotenv
+npm i react-router-dom@^5
+npm i dotenv
+npm i formik
+npm i yup
+
+n order to run the application Type the following command:
+
+npm start

@@ -1,22 +1,20 @@
 import React, { useState } from 'react';
+import * as Yup from 'yup';
+import { useFormik } from 'formik';
 import Input from '../components/Input/Input';
 import Button from '../components/UI/Button';
 import Container from '../components/UI/Container';
 import Title from '../components/UI/Title';
 import { useAuthCtx } from '../store/authContext';
-import * as Yup from 'yup';
-import { useFormik } from 'formik';
 import css from '../components/Input/Input.module.css';
 import { baseUrl, myFetchAuth } from '../utils';
-import { useHistory } from 'react-router-dom';
 import Feedback from '../components/Feedback/Feedback';
 import '../App.css';
 
-function Add() {
+function AddPage() {
   const [feedback, setFeedback] = useState('');
   const [feedClass, setFeedClass] = useState('');
   const { token } = useAuthCtx();
-  const history = useHistory();
 
   const formik = useFormik({
     initialValues: {
@@ -31,8 +29,6 @@ function Add() {
         .required('Required'),
     }),
     onSubmit: async (values, { resetForm }) => {
-      console.log('values ===', values);
-
       const fetchResult = await myFetchAuth(
         `${baseUrl}/content/skills`,
         token,
@@ -40,11 +36,11 @@ function Add() {
         values
       );
 
-      // console.log('fetchResultinSkills ===', fetchResult);
-
       if (fetchResult.msg) {
         setFeedback('Skill was added successfuly');
         setFeedClass('success');
+        resetForm({ values: '' });
+        return;
       }
       setFeedback('Something went wrong... Please try again');
       setFeedClass('alert');
@@ -62,11 +58,12 @@ function Add() {
             value={formik.values.title}
             name='title'
             type='text'
+            placeholder='your skill title...'
           >
             Title
           </Input>
           <p className='errors'>{formik.errors.title}</p>
-          <div className='inputBox'>
+          <div className={css.inputBox}>
             <label className={css.label} htmlFor='description'>
               Description
             </label>
@@ -77,6 +74,7 @@ function Add() {
               className={css.input}
               name='description'
               rows='4'
+              placeholder='description of your skill...'
             ></textarea>
           </div>
           <p className='errors'>{formik.errors.description}</p>
@@ -95,4 +93,4 @@ function Add() {
   );
 }
 
-export default Add;
+export default AddPage;

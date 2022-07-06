@@ -1,17 +1,17 @@
 import { useFormik } from 'formik';
 import React, { useState } from 'react';
 import * as Yup from 'yup';
-import Input from '../components/Input/Input';
-import Button from '../components/UI/Button';
-import Container from '../components/UI/Container';
-import Title from '../components/UI/Title';
-import '../App.css';
-import { baseUrl, myFetch } from '../utils';
-import { useAuthCtx } from '../store/authContext';
 import { useHistory } from 'react-router-dom';
 import Feedback from '../components/Feedback/Feedback';
+import Container from '../components/UI/Container';
+import { useAuthCtx } from '../store/authContext';
+import Input from '../components/Input/Input';
+import Button from '../components/UI/Button';
+import { baseUrl, myFetch } from '../utils';
+import Title from '../components/UI/Title';
+import '../App.css';
 
-function Login() {
+function LoginPage() {
   const [feedback, setFeedback] = useState('');
   const [feedClass, setFeedClass] = useState('');
   const history = useHistory();
@@ -30,8 +30,6 @@ function Login() {
         .required('Required'),
     }),
     onSubmit: async (values, { resetForm }) => {
-      // console.log('values ===', values);
-
       const fetchResult = await myFetch(
         `${baseUrl}/auth/login`,
         'POST',
@@ -59,6 +57,7 @@ function Login() {
             value={formik.values.email}
             name='email'
             type='email'
+            placeholder='your@email.lt'
           >
             Email
           </Input>
@@ -69,6 +68,7 @@ function Login() {
             value={formik.values.password}
             name='password'
             type='password'
+            placeholder='secret1'
           >
             Password
           </Input>
@@ -88,4 +88,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default LoginPage;

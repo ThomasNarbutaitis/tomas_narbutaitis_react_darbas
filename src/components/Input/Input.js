@@ -12,6 +12,7 @@ const Input = (props) => {
         className={`${css.input} ${css[props.className]}`}
         type={props.type}
         name={props.name}
+        placeholder={props.placeholder}
         required
       />
     </div>

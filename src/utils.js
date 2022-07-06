@@ -11,13 +11,9 @@ export async function myFetch(url, method = 'GET', body = null) {
     options.method = method === 'POST' ? 'POST' : 'GET';
     options.body = body ? JSON.stringify(body) : null;
 
-    // console.log('options ===', options);
-    // return;
-
     const resp = await fetch(url, options);
     // console.log('resp ===', resp);
     const dataInJs = await resp.json();
-    // console.log('dataInJs ===', dataInJs);
     return dataInJs;
   } catch (error) {
     console.log('MyFetch error ===', error);
@@ -25,7 +21,6 @@ export async function myFetch(url, method = 'GET', body = null) {
 }
 
 export async function myFetchAuth(url, token, method = 'GET', body = null) {
-  // console.log('token ===', token);
   try {
     const options = {
       headers: {
